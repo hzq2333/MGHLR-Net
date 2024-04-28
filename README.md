@@ -1,5 +1,5 @@
-# MGHLR-Net
---- Mask-Guided Framework for Joint Single Image Highlight Detection and Removal
+# ORHLR-Net
+--- ORHLR-Net: One-stage Residual Learning Network for Joint Single Image Specular Highlight Detection and Removal
 
 
 文件格式
@@ -25,3 +25,4 @@ MGHLR-Net
 		version1
 		...
 ```
+
