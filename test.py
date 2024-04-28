@@ -1,5 +1,3 @@
-## python test.py --tag shiq_last --pretrained ./last.ckpt -n last -o ../data/SHIQ_Dataset/test/test_C/ -s ./outputs_shiq_last -r ./
-## python test.py --tag shiq_last --pretrained ./last.ckpt -o ../data/SHIQ_Dataset/test/test_C/
 ## python test.py --tag shiq_last --pretrained ./last.ckpt
 import os, argparse
 
@@ -42,8 +40,8 @@ if __name__ == '__main__':
     parser.add_argument('--root_shiq', default='../data/SHIQ_Dataset', type=str, help='SHIQ dataset root directory')
     parser.add_argument('--tag', required=True, type=str, help='checkpoint tag')
     parser.add_argument('--gpu', default='0', type=str, help='which gpu to use')
-    parser.add_argument('--model_name', default='MGHLR', type=str, help='model name to choose')
-    parser.add_argument('--model_name', default='MGHLR', type=str, help='model name to choose')
+    parser.add_argument('--model_name', default='ORHLR', type=str, help='model name to choose')
+    parser.add_argument('--model_name', default='ORHLR', type=str, help='model name to choose')
     parser.add_argument('--pretrained', default='./pretrained/last.ckpt', type=str, help='path to pretrained model')
     #parser.add_argument("-n","--name", required=True, type=str, help="require name")  #项目名字-->f'MGHLR_{tag}'
     #parser.add_argument("-o","--original", required=True, type=str, help="require original file path")  #原图
@@ -93,19 +91,6 @@ if __name__ == '__main__':
             #name1 = os.path.join(output_dir, batch['name'][0][:-4]+'corrected.png')
             # new change name --> name1
             Image.fromarray((pred_img.detach().cpu().squeeze().permute(1,2,0).numpy()*255).astype(np.uint8)).save(name)
-            if args.sm:
-                pred_mask = pred_masks[-1]
-                mask_name = os.path.join(output_mask_dir, batch['name'][0][:-4]+'_mask.png')
-                #mage.fromarray((pred_mask.detach().cpu().squeeze().numpy()*255).astype(np.uint8)).save(mask_name)
-                
-                # 将张量转换为 numpy 数组，并进行二值化处理
-                pred_mask = pred_mask.detach().cpu().squeeze().numpy()
-                # 使用阈值 0.5 进行二值化，大于阈值的设为 255，小于阈值的设为 0
-                pred_mask = (pred_mask > 0.5).astype(np.uint8) * 255  
-
-                # 将二值化的结果保存为图像文件
-                mask_image = Image.fromarray(pred_mask)
-                mask_image.save(mask_name)
 
     folder1 = os.path.join(args.root_shiq,'test/test_C/')
     folder2 = output_dir
@@ -121,7 +106,7 @@ if __name__ == '__main__':
     time_str = datetime.datetime.now().strftime('%Y-%m-%d-%Hh-%mm-%Ss')
     print(time_str)
 
-    csvName = f'MGHLR_{tag}'+"_"+time_str+"_result.csv" 
+    csvName = f'ORHLR_{tag}'+"_"+time_str+"_result.csv" 
     ## csvName = args.name+"_result.csv" 
     print(csvName)
     file = args.result

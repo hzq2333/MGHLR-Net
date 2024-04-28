@@ -26,3 +26,11 @@ MGHLR-Net
 		...
 ```
 
+### Test
+
+Download model file from [here](https://drive.google.com/file/d/1_9HKBisV6H5TMMX3QlTY_u1iou6Qra_S/view?usp=drive_link)，and run：
+
+```
+python test.py --tag shiq_last --pretrained ./pretrained/best.ckpt
+```
+

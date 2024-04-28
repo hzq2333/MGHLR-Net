@@ -3,7 +3,7 @@ import argparse
 def get_args(mode='train'):
     # Arguments
     parser = argparse.ArgumentParser(description='highlightRemoval', fromfile_prefix_chars='@', conflict_handler='resolve')
-    parser.add_argument('--model_name', default='MGHLR', type=str, help='model name to choose')
+    parser.add_argument('--model_name', default='ORHLR', type=str, help='model name to choose')
     parser.add_argument('--seed', default=2023, type=int, help='random seed for reproducing results')
     parser.add_argument('--epochs', default=200, type=int, help='number of total epochs to run')
 
